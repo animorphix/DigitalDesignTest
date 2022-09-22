@@ -17,16 +17,6 @@ namespace DDTest
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         int n;
         private PictureBox[,] Safe = null;
 
@@ -36,17 +26,24 @@ namespace DDTest
             {
                 int size = Int32.Parse(textBox1.Text);
                 if (size > 1 && size <= 8)
+                {
                     n = size;
+                    this.textBox1.Clear();
+                }
+
                 else
                 {
                     MessageBox.Show("Enter values between 2 and 8");
                     n = 0;
+                    this.textBox1.Clear();
                 }
             }
             catch
             {
                 MessageBox.Show("Enter values between 2 and 8");
             }
+
+            
 
 
             if (Safe != null)
