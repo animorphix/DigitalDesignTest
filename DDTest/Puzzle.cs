@@ -39,13 +39,13 @@ namespace DDTest
                     n = size;
                 else
                 {
-                    MessageBox.Show("Enter values between 1 and 8");
+                    MessageBox.Show("Enter values between 2 and 8");
                     n = 0;
                 }
             }
             catch
             {
-                MessageBox.Show("Enter values between 1 and 8");
+                MessageBox.Show("Enter values between 2 and 8");
             }
 
 
@@ -96,6 +96,11 @@ namespace DDTest
                 }
 
             if (win) MessageBox.Show("win");
+
+        }
+
+        private void Puzzle_Load(object sender, EventArgs e)
+        {
 
         }
     }
