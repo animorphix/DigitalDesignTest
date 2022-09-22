@@ -57,15 +57,16 @@ namespace DDTest
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                 {
-                    Safe[i, j] = new PictureBox();
-                    Safe[i, j].Location = new System.Drawing.Point(-58*n +474 + i * 100, 300 + j * 100);
-                    Safe[i, j].Size = new System.Drawing.Size(80, 80);
-                    Safe[i, j].TabIndex = i;
-                    Safe[i, j].BackColor = Color.Black;
-                    Safe[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
-                    Safe[i, j].Image = Properties.Resources.Handle;
-                    Safe[i, j].Tag = 0;
-                    Safe[i, j].Anchor = AnchorStyles.Top;
+                    Safe[i, j] = new PictureBox
+                    {
+                        Location = new System.Drawing.Point(-53 * n + 434 + i * 100, 300 + j * 100),
+                        Size = new System.Drawing.Size(80, 80),
+                        SizeMode = PictureBoxSizeMode.StretchImage,
+                        Image = Properties.Resources.Handle,
+                        Anchor = AnchorStyles.Top,
+                        TabIndex = i,
+                        Tag = 0
+                    };
                     Controls.Add(Safe[i, j]);
                     int row = i;
                     int column = j;
@@ -88,7 +89,6 @@ namespace DDTest
                         Image image = Safe[i, j].Image;
                         image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         Safe[i, j].Image = image;
-
                         Safe[i, j].Tag = ((int)Safe[i, j].Tag + 1) % 2;
                     }
 
