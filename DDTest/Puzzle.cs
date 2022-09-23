@@ -17,7 +17,7 @@ namespace DDTest
             InitializeComponent();
         }
 
-        int n;
+        private int n;
         private PictureBox[,] Safe = null;
 
         private void EnterButton_Click(object sender, EventArgs e)
@@ -42,9 +42,6 @@ namespace DDTest
             {
                 MessageBox.Show("Enter values between 2 and 8");
             }
-
-            
-
 
             if (Safe != null)
                 foreach (var pictureBox in Safe)
@@ -75,7 +72,7 @@ namespace DDTest
                 SafeClick(rnd.Next(n), rnd.Next(n), true);
         }
 
-        void SafeClick(int row, int column, bool init = false)
+        private void SafeClick(int row, int column, bool init = false)
         {
             bool win = !init;
             for (int i = 0; i < n; i++)
@@ -96,9 +93,5 @@ namespace DDTest
 
         }
 
-        private void Puzzle_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

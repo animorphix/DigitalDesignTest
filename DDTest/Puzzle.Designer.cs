@@ -89,7 +89,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Puzzle";
             this.Text = "Puzzle";
-            this.Load += new System.EventHandler(this.Puzzle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
