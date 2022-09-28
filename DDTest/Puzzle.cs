@@ -12,13 +12,14 @@ namespace DDTest
 {
     public partial class Puzzle : Form
     {
+        private int n;
+        private PictureBox[,] Safe = null;
+        private string ErrorMessage = "Enter values between 2 and 8"
+
         public Puzzle()
         {
             InitializeComponent();
         }
-
-        private int n;
-        private PictureBox[,] Safe = null;
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
@@ -30,17 +31,16 @@ namespace DDTest
                     n = size;
                     this.textBox1.Clear();
                 }
-
                 else
                 {
-                    MessageBox.Show("Enter values between 2 and 8");
+                    MessageBox.Show(ErrorMessage);
                     n = 0;
                     this.textBox1.Clear();
                 }
             }
             catch
             {
-                MessageBox.Show("Enter values between 2 and 8");
+                MessageBox.Show(ErrorMessage);
             }
 
             if (Safe != null)
@@ -85,13 +85,10 @@ namespace DDTest
                         Safe[i, j].Image = image;
                         Safe[i, j].Tag = ((int)Safe[i, j].Tag + 1) % 2;
                     }
-
                     win &= (int)Safe[i, j].Tag == (int)Safe[0, 0].Tag;
                 }
 
             if (win) MessageBox.Show("win");
-
         }
-
     }
 }
