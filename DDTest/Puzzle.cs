@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using static Service.Service;
+
 
 namespace DDTest
 {
@@ -18,9 +20,9 @@ namespace DDTest
         }
 
         private int n;
-        private PictureBox[,] Safe = null;
+        public PictureBox[,] Safe = null;
 
-        private void EnterButton_Click(object sender, EventArgs e)
+        public void EnterButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -72,7 +74,7 @@ namespace DDTest
                 SafeClick(rnd.Next(n), rnd.Next(n), true);
         }
 
-        private void SafeClick(int row, int column, bool init = false)
+        public void SafeClick(int row, int column, bool init = false)
         {
             bool win = !init;
             for (int i = 0; i < n; i++)
