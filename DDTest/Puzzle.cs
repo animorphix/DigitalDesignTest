@@ -45,7 +45,7 @@ namespace DDTest
 
             if (Safe != null)
                 foreach (var pictureBox in Safe)
-                    Controls.Remove(pictureBox);
+                    groupBox1.Controls.Remove(pictureBox);
 
             Safe = new PictureBox[n, n];
             for (int i = 0; i < n; i++)
@@ -53,7 +53,7 @@ namespace DDTest
                 {
                     Safe[i, j] = new PictureBox
                     {
-                        Location = new System.Drawing.Point(-53 * n + 434 + i * 100, 300 + j * 100),
+                        Location = new System.Drawing.Point(800/(3/2*n) + i * 100, j * 100),
                         Size = new System.Drawing.Size(80, 80),
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Image = Properties.Resources.Handle,
@@ -61,15 +61,29 @@ namespace DDTest
                         TabIndex = i,
                         Tag = 0
                     };
-                    Controls.Add(Safe[i, j]);
+                    groupBox1.Controls.Add(Safe[i, j]);
                     int row = i;
                     int column = j;
                     Safe[i, j].Click += (x, y) => { SafeClick(row, column); };
                 }
+            //this randomizer works by emulating user input. 
+            //As it's aligned before randomization, the puzzle is always solvable by repeating
+            //the process in reverse order
 
             var randomize = new Random();
-            for (int i = 0; i < 40; i++)
-                SafeClick(randomize.Next(n), randomize.Next(n), true);
+            var notRandomized = true;
+            var allAlignedCondition = true;
+            while (notRandomized)
+            {
+                for (int i = 0; i < 50; i++)
+                    SafeClick(randomize.Next(n), randomize.Next(n), true);
+
+                for (int i = 0; i < n; i++)
+                    for (int j = 0; j < n; j++)
+                        allAlignedCondition &= (int)Safe[i, j].Tag == (int)Safe[0, 0].Tag;
+
+                if (!allAlignedCondition) notRandomized = false;
+            }
         }
 
         public void SafeClick(int row, int column, bool init = false)
@@ -89,6 +103,16 @@ namespace DDTest
                 }
 
             if (win) MessageBox.Show("Puzzle solved!");
+        }
+
+        private void Puzzle_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

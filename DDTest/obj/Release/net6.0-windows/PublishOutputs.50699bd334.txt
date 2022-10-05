@@ -1,0 +1,5 @@
+C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\publish\DDTest.exe
+C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\publish\DDTest.dll
+C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\publish\DDTest.deps.json
+C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\publish\DDTest.runtimeconfig.json
+C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\publish\DDTest.pdb
