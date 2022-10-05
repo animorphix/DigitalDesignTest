@@ -7,20 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static Service.Service;
-
 
 namespace DDTest
 {
     public partial class Puzzle : Form
     {
+        private int n;
+        private PictureBox[,] Safe = null;
+        private string ErrorMessage = "Enter values between 2 and 8";
+
         public Puzzle()
         {
             InitializeComponent();
         }
-
-        private int n;
-        public PictureBox[,] Safe = null;
 
         public void EnterButton_Click(object sender, EventArgs e)
         {
@@ -32,17 +31,16 @@ namespace DDTest
                     n = size;
                     this.textBox1.Clear();
                 }
-
                 else
                 {
-                    MessageBox.Show("Enter values between 2 and 8");
+                    MessageBox.Show(ErrorMessage);
                     n = 0;
                     this.textBox1.Clear();
                 }
             }
             catch
             {
-                MessageBox.Show("Enter values between 2 and 8");
+                MessageBox.Show(ErrorMessage);
             }
 
             if (Safe != null)
@@ -69,9 +67,9 @@ namespace DDTest
                     Safe[i, j].Click += (x, y) => { SafeClick(row, column); };
                 }
 
-            var rnd = new Random();
+            var randomize = new Random();
             for (int i = 0; i < 40; i++)
-                SafeClick(rnd.Next(n), rnd.Next(n), true);
+                SafeClick(randomize.Next(n), randomize.Next(n), true);
         }
 
         public void SafeClick(int row, int column, bool init = false)
@@ -87,13 +85,10 @@ namespace DDTest
                         Safe[i, j].Image = image;
                         Safe[i, j].Tag = ((int)Safe[i, j].Tag + 1) % 2;
                     }
-
                     win &= (int)Safe[i, j].Tag == (int)Safe[0, 0].Tag;
                 }
 
-            if (win) MessageBox.Show("win");
-
+            if (win) MessageBox.Show("Puzzle solved!");
         }
-
     }
 }
