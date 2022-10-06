@@ -72,7 +72,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(252, 74);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Enter a value between 2 and 8. The goal is to align all lines horizontally or ver" +
+            this.label2.Text = "Enter a value between 2 and 7. The goal is to align all lines horizontally or ver" +
     "tically";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
