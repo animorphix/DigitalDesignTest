@@ -16,6 +16,7 @@ C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\refint\DDTest
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.pdb
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.genruntimeconfig.cache
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\ref\DDTest.dll
+C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.Safe.resources
 C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.dll.manifest
 C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.application
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.dll.manifest
