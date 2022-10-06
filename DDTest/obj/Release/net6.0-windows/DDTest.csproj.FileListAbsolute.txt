@@ -5,7 +5,6 @@ C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.dll
 C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.pdb
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.csproj.AssemblyReference.cache
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.Properties.Resources.resources
-C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.Puzzle.resources
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.csproj.GenerateResource.cache
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.AssemblyInfoInputs.cache
@@ -17,6 +16,7 @@ C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.pdb
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.genruntimeconfig.cache
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\ref\DDTest.dll
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.Safe.resources
+C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.MessageConstants.resources
 C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.dll.manifest
 C:\Users\Ian\source\repos\DDTest\DDTest\bin\Release\net6.0-windows\DDTest.application
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Release\net6.0-windows\DDTest.dll.manifest

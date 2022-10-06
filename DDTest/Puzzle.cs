@@ -11,78 +11,81 @@ using static System.Windows.Forms.DataFormats;
 
 namespace DDTest
 {
+    public class MessageConstants
+    {
+        public const string ErrorText = "Enter values between 2 and 7";
+        public const string PuzzleSolvedText = "Puzzle solved!";
+    }
     public partial class Puzzle : Form
     {
         
-        private int n;
-        private PictureBox[,] Safe = null;
-        private GroupBox SizedGB = null;
+        private int _puzzleSize;
+        private PictureBox[,] _safe = null;
+        private GroupBox _sizedGB = null;
+        private Safe _safepuzzle = new Safe();
 
-        // the restrictions are in place to limit the area on the screen
-        //that is required to fit the puzzle. It could be increased to any 
+        // the restrictions on the size of the puzzle
+        // are in place to limit the area on the screen
+        //that is required to fit it. It could be increased to any 
         //number without massive alterations to the code.
-        private string ErrorMessage = "Enter values between 2 and 7";
 
         public Puzzle()
         {
             InitializeComponent();
         }
 
+        public void Display_Error()
+        {
+            MessageBox.Show(MessageConstants.ErrorText);
+            _puzzleSize = 0;
+            this.textBox1.Clear();
+        }
         
-
         public void EnterButton_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 int size = Int32.Parse(textBox1.Text);
                 if (size > 1 && size <= 7)
                 {
-                    n = size;
+                    _puzzleSize = size;
                     this.textBox1.Clear();
                 }
-                else
-                {
-                    MessageBox.Show(ErrorMessage);
-                    n = 0;
-                    this.textBox1.Clear();
-                }
+                else Display_Error();
+
             }
-            catch
-            {
-                MessageBox.Show(ErrorMessage);
-                n = 0;
-                this.textBox1.Clear();
+            catch 
+            { 
+                Display_Error(); 
             }
+      
 
-           
-
-            if (n > 1 && n <= 7)
+            if (_puzzleSize > 1 && _puzzleSize <= 7)
             {
-                Safe safepuzzle = new Safe();
-                safepuzzle.Show();
+                
+                _safepuzzle.Show();
 
-                if (Safe != null)
+                if (_safe != null)
                 {
-                    foreach (var pictureBox in Safe)
-                        SizedGB.Controls.Remove(pictureBox);
-                    safepuzzle.Controls.Remove(SizedGB);
+                    foreach (var pictureBox in _safe)
+                        _sizedGB.Controls.Remove(pictureBox);
+                    _safepuzzle.Controls.Remove(_sizedGB);
                 }
 
-                Safe = new PictureBox[n, n];
-                SizedGB = new GroupBox();
-                SizedGB.Size = new Size(n * 100,n * 100);
-                SizedGB.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-                safepuzzle.Controls.Add(SizedGB);
+                _safe = new PictureBox[_puzzleSize, _puzzleSize];
+                _sizedGB = new GroupBox();
+                _sizedGB.Size = new Size(_puzzleSize * 100,_puzzleSize * 100);
+                _sizedGB.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                _safepuzzle.Controls.Add(_sizedGB);
 
                 var randomize = new Random();
                 var notRandomized = true;
                 var allAlignedCondition = true;
 
-                for (int i = 0; i < n; i++)
-                    for (int j = 0; j < n; j++)
+                for (int i = 0; i < _puzzleSize; i++)
+                    for (int j = 0; j < _puzzleSize; j++)
                     {
-                        Safe[i, j] = new PictureBox
+                        _safe[i, j] = new PictureBox
                         {
                             Location = new System.Drawing.Point(20 + i * 100, 20 + j * 100),
                             Size = new System.Drawing.Size(80, 80),
@@ -92,47 +95,50 @@ namespace DDTest
                             TabIndex = i,
                             Tag = 0
                         };
-                        SizedGB.Controls.Add(Safe[i, j]);
+                        _sizedGB.Controls.Add(_safe[i, j]);
                         int row = i;
                         int column = j;
-                        Safe[i, j].Click += (x, y) => { SafeClick(row, column); };
+                        _safe[i, j].Click += (x, y) => { SafeClick(row, column); };
                     }
 
                 while (notRandomized)
                 {
-                    for (int i = 0; i < n * n; i++)
-                        SafeClick(randomize.Next(n), randomize.Next(n), true);
+                    for (int i = 0; i < _puzzleSize * _puzzleSize; i++)
+                        SafeClick(randomize.Next(_puzzleSize), randomize.Next(_puzzleSize), true);
 
-                    for (int i = 0; i < n; i++)
-                        for (int j = 0; j < n; j++)
-                            allAlignedCondition &= (int)Safe[i, j].Tag == (int)Safe[0, 0].Tag;
+                    for (int i = 0; i < _puzzleSize; i++)
+                        for (int j = 0; j < _puzzleSize; j++)
+                            allAlignedCondition &= (int)_safe[i, j].Tag == (int)_safe[0, 0].Tag;
 
                     if (!allAlignedCondition) notRandomized = false;
                 }
                 //this randomizer works by emulating user input. 
                 //As it's aligned before randomization, the puzzle is always solvable by repeating
                 //the process in reverse order
-                
             }
         }
-
+        
         public void SafeClick(int row, int column, bool state = false)
         {
             bool win = !state;
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++)
+            for (int i = 0; i < _puzzleSize; i++)
+                for (int j = 0; j < _puzzleSize; j++)
                 {
                     if (i == row || j == column)
                     {
-                        Image image = Safe[i, j].Image;
+                        Image image = _safe[i, j].Image;
                         image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        Safe[i, j].Image = image;
-                        Safe[i, j].Tag = ((int)Safe[i, j].Tag + 1) % 2;
+                        _safe[i, j].Image = image;
+                        _safe[i, j].Tag = ((int)_safe[i, j].Tag + 1) % 2;
                     }
-                    win &= (int)Safe[i, j].Tag == (int)Safe[0, 0].Tag;
+                    win &= (int)_safe[i, j].Tag == (int)_safe[0, 0].Tag;
                 }
 
-            if (win) MessageBox.Show("Puzzle solved!");
+            if (win) 
+            { 
+                MessageBox.Show(MessageConstants.PuzzleSolvedText);
+                _safepuzzle.Hide();
+            }
         }
 
     }

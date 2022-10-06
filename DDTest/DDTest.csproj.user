@@ -4,9 +4,6 @@
     <_LastSelectedProfileId>C:\Users\Ian\source\repos\DDTest\DDTest\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Puzzle.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Safe.cs">
       <SubType>Form</SubType>
     </Compile>
