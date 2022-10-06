@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.EnterButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -77,29 +76,17 @@
     "tically";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox1.Location = new System.Drawing.Point(42, 251);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(900, 900);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
             // Puzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 1031);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "Puzzle";
             this.Text = "Puzzle";
-            this.Load += new System.EventHandler(this.Puzzle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,6 +98,5 @@
         private Label label1;
         private Button EnterButton;
         private Label label2;
-        private GroupBox groupBox1;
     }
 }

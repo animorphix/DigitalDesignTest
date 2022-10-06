@@ -14,6 +14,7 @@ namespace DDTest
     {
         private int n;
         private PictureBox[,] Safe = null;
+        private GroupBox SizedGB = null;
         private string ErrorMessage = "Enter values between 2 and 8";
 
         public Puzzle()
@@ -44,16 +45,25 @@ namespace DDTest
             }
 
             if (Safe != null)
+            {
                 foreach (var pictureBox in Safe)
-                    groupBox1.Controls.Remove(pictureBox);
-
+                    SizedGB.Controls.Remove(pictureBox);
+                this.Controls.Remove(SizedGB);
+            }
+                
+           
             Safe = new PictureBox[n, n];
+            SizedGB = new GroupBox();
+            SizedGB.Size = new Size(20 + n * 100, 20 + n * 100);
+            SizedGB.Anchor = AnchorStyles.Top;
+            SizedGB.Location = new Point(355 - (int)Math.Pow(n,2.71), 250);
+            this.Controls.Add(SizedGB);
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                 {
                     Safe[i, j] = new PictureBox
                     {
-                        Location = new System.Drawing.Point(800/(3/2*n) + i * 100, j * 100),
+                        Location = new System.Drawing.Point(20 + i * 100, 20 + j * 100),
                         Size = new System.Drawing.Size(80, 80),
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Image = Properties.Resources.Handle,
@@ -61,7 +71,7 @@ namespace DDTest
                         TabIndex = i,
                         Tag = 0
                     };
-                    groupBox1.Controls.Add(Safe[i, j]);
+                    SizedGB.Controls.Add(Safe[i, j]);
                     int row = i;
                     int column = j;
                     Safe[i, j].Click += (x, y) => { SafeClick(row, column); };
@@ -73,6 +83,7 @@ namespace DDTest
             var randomize = new Random();
             var notRandomized = true;
             var allAlignedCondition = true;
+
             while (notRandomized)
             {
                 for (int i = 0; i < 50; i++)
@@ -103,16 +114,6 @@ namespace DDTest
                 }
 
             if (win) MessageBox.Show("Puzzle solved!");
-        }
-
-        private void Puzzle_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
