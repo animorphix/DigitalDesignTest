@@ -16,3 +16,4 @@ C:\Users\Ian\source\repos\DDTest\DDTest\obj\Debug\net6.0-windows\DDTest.genrunti
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Debug\net6.0-windows\ref\DDTest.dll
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Debug\net6.0-windows\DDTest.Puzzle.resources
 C:\Users\Ian\source\repos\DDTest\DDTest\obj\Debug\net6.0-windows\DDTest.Properties.Resources.resources
+C:\Users\Ian\source\repos\DDTest\DDTest\obj\Debug\net6.0-windows\DDTest.Safe.resources

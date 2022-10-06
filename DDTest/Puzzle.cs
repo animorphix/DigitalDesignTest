@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace DDTest
 {
     public partial class Puzzle : Form
     {
+        
         private int n;
         private PictureBox[,] Safe = null;
         private GroupBox SizedGB = null;
@@ -26,8 +28,11 @@ namespace DDTest
             InitializeComponent();
         }
 
+        
+
         public void EnterButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 int size = Int32.Parse(textBox1.Text);
@@ -50,21 +55,25 @@ namespace DDTest
                 this.textBox1.Clear();
             }
 
-            if (Safe != null)
-            {
-                foreach (var pictureBox in Safe)
-                    SizedGB.Controls.Remove(pictureBox);
-                this.Controls.Remove(SizedGB);
-            }
+           
 
             if (n > 1 && n <= 7)
             {
+                Safe safepuzzle = new Safe();
+                safepuzzle.Show();
+
+                if (Safe != null)
+                {
+                    foreach (var pictureBox in Safe)
+                        SizedGB.Controls.Remove(pictureBox);
+                    safepuzzle.Controls.Remove(SizedGB);
+                }
+
                 Safe = new PictureBox[n, n];
                 SizedGB = new GroupBox();
-                SizedGB.Size = new Size(20 + n * 100, 20 + n * 100);
-                SizedGB.Anchor = AnchorStyles.Top;
-                SizedGB.Location = new Point(355 - (int)Math.Pow(n, 2.71), 250);
-                this.Controls.Add(SizedGB);
+                SizedGB.Size = new Size(n * 100,n * 100);
+                SizedGB.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                safepuzzle.Controls.Add(SizedGB);
 
                 var randomize = new Random();
                 var notRandomized = true;
@@ -103,12 +112,13 @@ namespace DDTest
                 //this randomizer works by emulating user input. 
                 //As it's aligned before randomization, the puzzle is always solvable by repeating
                 //the process in reverse order
+                
             }
         }
 
-        public void SafeClick(int row, int column, bool init = false)
+        public void SafeClick(int row, int column, bool state = false)
         {
-            bool win = !init;
+            bool win = !state;
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                 {
@@ -124,5 +134,6 @@ namespace DDTest
 
             if (win) MessageBox.Show("Puzzle solved!");
         }
+
     }
 }
