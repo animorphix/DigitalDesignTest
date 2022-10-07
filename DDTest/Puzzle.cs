@@ -11,19 +11,9 @@ using static System.Windows.Forms.DataFormats;
 
 namespace DDTest
 {
-    public class MessageConstants
-    {
-        public const string ErrorText = "Enter values between 2 and 7";
-        public const string PuzzleSolvedText = "Puzzle solved!";
-    }
+    
     public partial class Puzzle : Form
     {
-        
-        private int _puzzleSize;
-        private PictureBox[,] _safe = null;
-        private GroupBox _sizedGB = null;
-        private Safe _safepuzzle = new Safe();
-
         // the restrictions on the size of the puzzle
         // are in place to limit the area on the screen
         //that is required to fit it. It could be increased to any 
@@ -34,13 +24,13 @@ namespace DDTest
             InitializeComponent();
         }
 
-        public void Display_Error()
+        private void DisplayError(string text)
         {
-            MessageBox.Show(MessageConstants.ErrorText);
+            MessageBox.Show(text);
             _puzzleSize = 0;
             this.textBox1.Clear();
         }
-        
+
         public void EnterButton_Click(object sender, EventArgs e)
         {
             try
@@ -51,12 +41,15 @@ namespace DDTest
                     _puzzleSize = size;
                     this.textBox1.Clear();
                 }
-                else Display_Error();
+                else
+                {
+                    DisplayError(MessageConstants.ErrorText);
+                }
 
             }
             catch 
             { 
-                Display_Error(); 
+                DisplayError(MessageConstants.ErrorText); 
             }
       
 
@@ -141,5 +134,9 @@ namespace DDTest
             }
         }
 
+        private int _puzzleSize;
+        private PictureBox[,] _safe = null;
+        private GroupBox _sizedGB = null;
+        private Safe _safepuzzle = new Safe();
     }
 }
